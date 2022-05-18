@@ -1,0 +1,31 @@
+{% extends  'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+<style>
+	footer {
+    margin-top: 20%;
+	}
+</style>
+<div class="container">
+	<div class="container-shop">
+			<div class="col">
+				<div class="box-element product">
+				<h3><strong>{{vinho.nome}} {{vinho.colheita}}</strong></h3>
+					<hr>
+					<img src="{{vinho.vinho_imagem.url}}" height="300px"></div>
+
+					<h5>Tipo:</h5> {{vinho.tipo}}<br>
+					<h5>Colheita:</h5>{{vinho.colheita}}<br>
+					<h5>Produtor:</h5> {{vinho.produtor}}<br>
+					<h5> Descricao:</h5> {{vinho.descricao}}<br>
+					{% if vinho.precopromocao > 0  %}
+					<h4 style="display: inline-block; float: right; color: red"><strong>Promoção: {{vinho.precopromocao}} €</strong></h4>
+					{% else %}
+					<h4 style="display: inline-block; float: right"><strong>Preço: {{vinho.preco}} €</strong></h4>
+					{% endif %}
+					<br>
+					<button data-wine={{vinho.vinho_id}} data-acao="add" class="btn btn-outline-secondary add-btn adicionar-ao-carrinho">Adicionar Ao Cesto</button>
+			</div>
+	</div>
+</div>
+{% endblock %}

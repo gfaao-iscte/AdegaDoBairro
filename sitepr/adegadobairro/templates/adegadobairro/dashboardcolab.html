@@ -1,0 +1,73 @@
+{% extends  'adegadobairro/maindashboard.html' %}
+{% load static %}
+{% block conteudo %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+		$(document).ready(function(){
+          $(".toggle").click(function(){
+            $(".toggle-form").toggle();
+          });
+        });
+
+</script>
+<style>
+
+	.toggle-form {
+		display: none;
+	}
+
+	.toggle:hover {
+		opacity: 0.5;
+	}
+
+</style>
+<div class="row">
+    <div class="col-md-4">
+		<h3>Colaboradores</h3>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Nome</th>
+                    <th>Email</th>
+				</tr>
+
+				{% for colab in colabs %}
+					<tr>
+						<td>{{colab.first_name}}</td>
+                        <td>{{colab.email}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'editarcolab' colab %}">Editar</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'apagarcolab' colab %}">Apagar</a></td>
+
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<h3 class="toggle">Adicionar Colaborador</h3>
+    <form action="{% url 'dashboardcolab' %}" class="toggle-form" method="post">
+				{% csrf_token %}
+				<label for="id_user">Username:</label>
+				<input type="text" id="id_user" name="username" size="20"  placeholder="Username"><br>
+				<label for="id_name">Nome:</label>
+				<input type="text" id="id_name" name="name" size="20"  placeholder="Nome"><br>
+				<label for="id_lastname">Apelido:</label>
+				<input type="text" id="id_lastname" name="lname" size="20" placeholder="Apelido"><br>
+				<label for="id_email">Email:</label>
+				<input type="email" id="id_email" name="email" size="100"  placeholder="Email"><br>
+				<label for="id_password1">Password:</label>
+				<input type="password" id="id_password1" name="password1" size="20" placeholder="Password"><br>
+				<label for="id_password2">Confirmar Password:</label>
+				<input type="password" id="id_password2" name="password2" size="20"  placeholder="Confirme a Password"><br>
+				<button type="submit" >Criar Colaborador</button>
+			</form><br/>
+			{% for message in messages %}
+					<p id="messages">{{message}}</p>
+	 		{% endfor %}
+</div>
+{% endblock %}

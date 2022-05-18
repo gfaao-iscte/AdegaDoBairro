@@ -1,0 +1,80 @@
+{% extends 'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    .container {
+		width: 100%;
+	}
+
+
+    .container table#table1 {
+        table-layout: auto;
+        width: 1000px;
+    }
+
+    .container table#table2 {
+        table-layout: fixed;
+        width: 200px;
+    }
+
+    .container div {
+        max-width: 200px;
+        padding: 10px;
+    }
+
+    .container h1 {
+        color: #5b069f;
+    }
+	.container a{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.container h1{
+		position: center;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+    footer {
+    margin-top: 28%;
+	}
+
+    </style>
+
+	<div class="container" id="cesto-container">
+        <h2>A sua encomenta</h2>
+        <div>
+            <table id="table1">
+                <tr>
+					<th></th>
+					<th></th>
+                    <th>Vinho</th>
+                    <th>Preço Unitário</th>
+					<th>Quantidade</th>
+					<th>Preço</th>
+                </tr>
+				{% for pedido_vinho in pedidos_vinhos %}
+                <tr>
+					<td></td>
+                    <td><img class="row-image" src="{{pedido_vinho.vinho.vinho_imagem.url}}" height="300px"></td>
+                    <td>{{pedido_vinho.vinho.nome}} {{pedido_vinho.vinho.colheita}}</td>
+                    <td>{{pedido_vinho.preco}} €</td>
+					<td>{{pedido_vinho.quantidade}}</td>
+					<td>{{pedido_vinho.precototal}}</td>
+                    <td>
+                        <button data-wine={{pedido_vinho.vinho.vinho_id}} data-acao="add" class="btn btn-outline-secondary add-btn adicionar-ao-carrinho " style="display: inline-block; float:right; padding-top:10px">+</button>
+                        <button data-wine={{pedido_vinho.vinho.vinho_id}} data-acao="remove" class="btn btn-outline-secondary add-btn adicionar-ao-carrinho " style="display: inline-block; float:right; padding-top:10px">-</button>
+                    </td>
+                </tr>
+				{% endfor %}
+            </table>
+        </div>
+		<h1>Total: {{total}} €</h1>
+		<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' pedido %}">Checkout</a>
+		<br><br>
+	</div>
+{% endblock conteudo %}

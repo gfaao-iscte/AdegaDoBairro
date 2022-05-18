@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adega do Bairro | Dashboard</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/maindashboard.css '%}">
+</head>
+<body>
+<header>
+        <a class="logo" href="{% url 'home' %}"><img src="{% static 'adegadobairro/images/adegadobairrologomini.png' %}" width="30%"></a>
+</header>
+<div class="dashboard-menu">
+	<ul class="links" id="links-dashboard">
+		<li><a href="{% url 'dashboardvinho' %}">Vinhos</a></li>
+        {% if tipo == 'admins' %}
+		<li><a href="{% url 'dashboardcolab' %}">Colaboradores</a></li>
+        {% endif %}
+		<li><a href="{% url 'dashboardpedidos' %}">Pedidos</a></li>
+	</ul>
+</div>
+{% block conteudo %}
+{% endblock %}
+</body>
+</html>

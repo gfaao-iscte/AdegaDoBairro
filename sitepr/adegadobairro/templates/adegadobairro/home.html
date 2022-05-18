@@ -1,0 +1,24 @@
+{% extends  'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+    <a class="fundo" href=""><img src="{% static 'adegadobairro/images/adega2.jpg' %}" width="100%" ></a>
+    <div class="centered" >-  Desde 1927    -</div>
+
+<style>
+    .centered {
+            text-align: center;
+            color: white;
+          position: fixed;
+        font-size: 50px;
+          top: 50%;
+          left: 50%;
+        background-color: #5E17EB;
+        border-radius: 15px;
+          transform: translate(-50%, -50%);
+        }
+
+    .fundo img{
+        opacity: 0.9;
+    }
+</style>
+{% endblock %}

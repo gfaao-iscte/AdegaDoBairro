@@ -1,0 +1,29 @@
+{% extends 'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+<style>
+    .container {
+        margin-bottom: 10%;
+        margin-top: 10%;
+    }
+</style>
+<div class="container">
+<h2>Encomenda nº {{pedido.pedido_id}}</h2>
+<h3>Cliente</h3>
+<h6>Nome: {{pedido.cliente.nome}} {{pedido.cliente.apelido}}</h6>
+<h6>Morada: {{pedido.morada}}, {{pedido.cidade}}</h6>
+<h6>Telemóvel: {{pedido.cliente.telemovel}}</h6>
+<h6>NIF: {{pedido.nif}}</h6>
+<h3>Descritivo Encomenda</h3>
+<h6>Data: </h6>
+{% for pedido_vinho in pedidos_vinhos %}
+<h6>Nome: {{pedido_vinho.vinho.nome}} | Colheita{{pedido_vinho.vinho.colheita}} | Preço: Unidade: {{pedido_vinho.preco}} euros | Quantidade: {{pedido_vinho.quantidade}} | Preço Total:{{pedido_vinho.precototal}} euros</h6>
+{% endfor %}
+{% if pedido.emloja == False %}
+    <h6>Portes: Não se Aplica</h6>
+{% else %}
+    <h6>Portes: 3.5 euros</h6>
+{% endif %}
+<h4>Total Encomendda: {{pedido.precototal}}</h4>
+</div>
+{% endblock conteudo %}

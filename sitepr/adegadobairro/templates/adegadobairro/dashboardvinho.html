@@ -1,0 +1,69 @@
+{% extends  'adegadobairro/maindashboard.html' %}
+{% load static %}
+{% block conteudo %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+		$(document).ready(function(){
+          $(".toggle").click(function(){
+            $(".toggle-form").toggle();
+          });
+        });
+
+</script>
+<style>
+
+	.toggle-form {
+		display: none;
+	}
+
+	.toggle:hover {
+		opacity: 0.5;
+	}
+
+</style>
+</script>
+<div class="row">
+    <div class="col-md-6">
+		<h3>Vinhos</h3>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Nome</th>
+                    <th>Preço</th>
+					<th>Colheita</th>
+					<th>Promoção</th>
+				</tr>
+
+				{% for vinho in vinhos %}
+					<tr>
+						<td>{{vinho.nome}}</td>
+                        <td>{{vinho.preco}}</td>
+						<td>{{vinho.colheita}}</td>
+						<td>{{vinho.precopromocao}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'editarvinho' vinho.vinho_id %}">Editar</a></td>
+'						{% if tipo == 'admins' %}
+'						<td><a class="btn btn-sm btn-danger" href="{% url 'apagarvinho' vinho.vinho_id %}">Apagar</a></td>
+						{% endif %}
+
+
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<h3 class="toggle">Adicionar Vinho</h3>
+	<form class="vinho-form toggle-form" id="vinho-id" action="{% url 'dashboardvinho' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" >Criar Vinho</button>
+			</form><br/>
+			{% for message in messages %}
+					<p id="messages">{{message}}</p>
+	 		{% endfor %}
+</div>
+{% endblock %}

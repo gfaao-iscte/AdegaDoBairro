@@ -1,0 +1,54 @@
+{% extends 'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+<style>
+	input[type=email], input[type=password], input[type=text], input[type=number] {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  box-sizing: border-box;
+	}
+
+	.container-checkout{
+		width: 70%;
+		margin-right: 15%;
+		margin-left: 15%;
+	}
+
+		button {
+	  background-color: #050505;
+	  color: white;
+	  padding: 14px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  cursor: pointer;
+	  width: 100%;
+		border-radius: 10px;
+	}
+
+button:hover {
+  opacity: 0.8;
+}
+
+</style>
+<div class="container-checkout">
+	<div class="row">
+    <form class="checkout-form" id="form-id" action="{% url 'checkout' pedido.pedido_id  %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h3>Preencha os Dados da Encomenda:</h3>
+				{{ form.as_p }}
+				<label for="enviooulevantamento">Encomenda: </label>
+				<select id="enviooulevantamento" name="enviooulevantamento">
+						<option value="emloja">Levantar na Loja</option>
+						<option value="emcasa">Receber em Casa (custo de 3.5 €)</option>
+				</select>
+				<h2>Total: {{pedido.precototal}} €</h2>
+				<button type="submit" >Efetuar Encomenda</button>
+				</form><br/>
+
+
+</div>
+</div>
+{% endblock conteudo %}

@@ -1,0 +1,67 @@
+{% extends  'adegadobairro/main.html' %}
+{% load static %}
+{% block conteudo %}
+<style>
+	footer {
+    margin-top: 25%;
+	}
+</style>
+<div class="div-loja-filter" id="loja-vinhos">
+	<form  action="{% url 'vinhos' %}" method="post">
+		{% csrf_token %}
+	<ul>
+		<li>Ordernar Por:
+			<select id="ordenar" name="ordenar">
+				<option value=""></option>
+				<option value="maisvendidos">Mais Vendidos</option>
+		  		<option value="preço">Preço</option>
+		  		<option value="maisrecentes">Mais Recentes</option>
+		</select>
+		</li>
+		<li>Tipo:
+			<select id="tipo" name="tipo">
+				<option value=""></option>
+				<option value="Tinto">Tinto</option>
+		  		<option value="Branco">Branco</option>
+				<option value="Rose">Rose</option>
+		  		<option value="Madeira">Madeira</option>
+				<option value="Porto">Porto</option>
+				<option value="Frisante">Frisante</option>
+			</select>
+		</li>
+		<li>Promoções: <input type="checkbox"  name="promocoes" >
+		</li>
+		<ul>
+			<li>
+				<input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Nome do Vinho" aria-label="Nome do Vinho">
+			</li>
+			<li>
+				<br>
+				<button class="btn btn-outline-secondary" type="submit">Filtrar</button>
+			</li>
+		</ul>
+	</ul>
+	</form>
+</div>
+<div class="vinhos-loja" id="div-loja">
+		{% for vinho in vinhos %}
+		<div class="item" >
+			<img src="{{vinho.vinho_imagem.url}}" height="300px">
+			<div class="box-element product">
+				<h6><strong>{{vinho.nome}}</strong></h6>
+				<h6><strong>{{vinho.colheita}}</strong></h6><br>
+				{% if vinho.precopromocao > 0  %}
+						<h4 style="display: inline-block; color: red; float:right"><strong>{{vinho.precopromocao}} €</strong></h4>
+						{% else %}
+						<h4 style="display: inline-block; float:right"><strong>{{vinho.preco}} €</strong></h4>
+				{% endif %}<br>
+				<div class="container">
+					<a href="{% url 'vinho' vinho.vinho_id %}"><button href="{% url 'vinho' vinho.vinho_id %}" class="btn btn-outline-secondary" style="display: inline-block; float:left; padding-top:10px">Detalhe</button></a><br>
+				<button data-wine={{vinho.vinho_id}} data-acao="add" class="btn btn-outline-secondary add-btn adicionar-ao-carrinho " style="display: inline-block; float:right; padding-top:10px">Adicionar ao Cesto</button>
+				</div>
+
+			</div>
+		</div>
+		{% endfor %}
+</div>
+{% endblock %}

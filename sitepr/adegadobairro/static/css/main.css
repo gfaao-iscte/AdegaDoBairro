@@ -1,0 +1,264 @@
+body{
+    background-color: #ffffff;
+
+}
+
+header{
+    background-color: #5E17EB;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+     top:0;
+    background: #5E17EB;
+    z-index:3;">
+
+}
+
+
+
+header img{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+}
+
+.footer-adega {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #5E17EB;
+    height: auto;
+    width: 100vw;
+    padding-top: 0px;
+    color: #fff;
+}
+.div-links{
+    padding-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.header-ul-left{
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    margin-right: auto;
+    padding: 1px 20px;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 0px;
+    font-size: 1.1rem;
+    transition: color .4s ease;
+}
+
+header a:hover{
+    color: #7c7c7c;
+}
+
+header li{
+     margin: 0 10px;
+}
+
+.header-ul-right{
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    padding: 1px 20px;
+}
+.footer-adega{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    width: 100%;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.footer-links li{
+    margin: 0 10px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #fff;
+    padding: 0px;
+}
+
+.footer-links a i{
+    font-size: 1.1rem;
+    width: 20px;
+    transition: color .4s ease;
+}
+
+.footer-links a:hover {
+    color: #7c7c7c;
+}
+
+.nav-link {
+    color: white;
+}
+
+.image-container{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.image-container img{
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+footer{
+  height:100px; bottom:0;
+}
+.content{
+  top:100px;
+  bottom:100px;
+  overflow:hidden; /* use this if don't want any window scrollbars and use an inner element for scrolling*/
+}
+
+#dados input[type=email], input[type=password], input[type=text], input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#dados  button{
+  background-color: #5E17EB;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+    border-radius: 10px;
+}
+
+#dados button:hover {
+  opacity: 0.8;
+}
+
+.minha-conta {
+    width: 75%;
+     margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
+.sobre-nos {
+    width: 75%;
+     margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
+.div-loja-filter{
+    background-color: #cbc8c8;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    padding-top: 10px;
+    color: #070707;
+
+
+}
+
+
+.vinhos-loja {
+    padding-top: 50px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+}
+
+.item {
+    padding-top: 50px;
+    padding-top: 10px;
+    max-width: 100%;
+}
+
+.item img{
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10px;
+
+}
+
+.item button{
+    padding-top: 50px;
+        padding-bottom: 10px;
+   max-width: 100%;
+}
+
+.vinho-form li{
+    list-style: none;
+    display: inline;
+    justify-content: left;
+    margin-right: auto;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+
+.div-loja-filter li{
+    list-style: none;
+    display: inline;
+    justify-content: left;
+    margin-right: auto;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+
+.div-loja-filter input{
+    width: 25%;
+}
+
+#cesto-container .container{
+    list-style: none;
+    display: inline;
+    justify-content: left;
+    margin-right: auto;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+
+footer {
+    margin-top: 25%;
+}

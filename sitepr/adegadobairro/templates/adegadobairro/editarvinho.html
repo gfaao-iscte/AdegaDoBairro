@@ -1,0 +1,18 @@
+{% extends  'adegadobairro/maindashboard.html' %}
+{% load static %}
+{% block conteudo %}
+
+<div class="row">
+    <form class="vinho-form" id="vinho-id" action="{% url 'editarvinho' vinho.vinho_id %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h3>Editar Vinho</h3>
+				{{ form.as_p }}
+				<div class="foto-div">
+				<img src="{{vinho.vinho_imagem.url}}" height="300px"></div>
+				<button type="submit" >Editar Vinho</button>
+			</form><br/>
+			{% for message in messages %}
+					<p id="messages">{{message}}</p>
+	 		{% endfor %}
+</div>
+{% endblock %}
